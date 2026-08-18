@@ -1615,7 +1615,9 @@ mod tests {
         let release =
             std::fs::read_to_string(root().join(".github/workflows/release-stable-manual.yml"))
                 .unwrap();
-        assert!(release.contains("features --selection dist --target \"${{ matrix.target }}\""));
+        assert!(
+            release.contains("features --selection dist-broad --target \"${{ matrix.target }}\"")
+        );
         assert!(!release.contains("excluded_features"));
 
         let manual = std::fs::read_to_string(
